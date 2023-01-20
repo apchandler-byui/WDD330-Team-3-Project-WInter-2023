@@ -60,6 +60,9 @@ function renderCartTotal() {
   cartTotal = numberWithCommas(cartTotal);
   console.log('Total number:', numberInCart);
 
+  if (numberInCart >= 1){
+    document.getElementById("total_items_in_cart").innerHTML = numberInCart;
+  }
   // append price to div
   const cartTotalContent = document.createTextNode(cartTotal);
   document.getElementById("cart-footer").appendChild(cartTotalContent);
