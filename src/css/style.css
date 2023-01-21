@@ -123,10 +123,9 @@ button {
   right: 15px ;
   border-radius: 8px;
 }
-.items_total {
-  
+.items_total {  
   font-size: 2.25vh;
-  color: #fff;
+  color: red;
   text-shadow: 2px 2px black;
   position: absolute;
   width: inherit;
