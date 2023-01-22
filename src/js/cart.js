@@ -59,10 +59,11 @@ function renderCartTotal() {
   }
   cartTotal = numberWithCommas(cartTotal.toFixed(2));
   console.log('Total number:', numberInCart);
-
-  if (numberInCart >= 1){
-    document.getElementById("total_items_in_cart").innerHTML = numberInCart;
+      document.getElementById("total_items_in_cart").innerHTML = numberInCart;
   }
+
+
+
   
   
   // append price to div
