@@ -59,16 +59,21 @@ function renderCartTotal() {
   }
   cartTotal = numberWithCommas(cartTotal.toFixed(2));
   console.log('Total number:', numberInCart);
-      document.getElementById("total_items_in_cart").innerHTML = numberInCart;
+  
+  if(numberInCart >= 1) {
+    totalItemsInCart(numberInCart);    
   }
-
-
-
   
   
   // append price to div
   const cartTotalContent = document.createTextNode(cartTotal);
   document.getElementById("cart-footer").appendChild(cartTotalContent);
+}
+
+function totalItemsInCart(items) {
+  let element = document.getElementById("numberOfItems");
+  element.classList.add("cartItems_total");
+  document.getElementById("total_items_in_cart").innerHTML = items;
 }
 
 renderCartContents();
