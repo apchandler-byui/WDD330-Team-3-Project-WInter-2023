@@ -60,9 +60,9 @@ function renderCartTotal() {
   cartTotal = numberWithCommas(cartTotal.toFixed(2));
   console.log('Total number:', numberInCart);
 
-  if (numberInCart >= 1) {
-    totalItemsInCart(numberInCart);
-  }
+
+  totalItemsInCart(numberInCart);
+ 
 
 
   // append price to div
@@ -71,9 +71,12 @@ function renderCartTotal() {
 }
 
 function totalItemsInCart(items) {
+  if (items >= 1) {
   let element = document.getElementById("numberOfItems");
   element.classList.add("cartItems_total");
   document.getElementById("total_items_in_cart").innerHTML = items;
+  }
 }
+
 
 renderCartContents();
