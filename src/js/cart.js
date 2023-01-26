@@ -43,6 +43,25 @@ function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+export function calcNumCartItems(cartItems){
+  // calcuates number of items in cart
+  let numberInCart = 0;
+  for (let i = 0; i < cartItems.length; i++) {
+    numberInCart += cartItems[i]['Quantity'];
+  }
+  return numberInCart;
+}
+
+function calcCartTotal(cartItems){
+  // calcuates number of items in cart
+  let cartTotal = 0;
+  for (let i = 0; i < cartItems.length; i++) {
+    cartTotal += cartItems[i]['Quantity'] * cartItems[i]['FinalPrice'];
+  }
+  return cartTotal;
+}
+
+
 // if there are items in the cart, total will be displayed
 function renderCartTotal() {
   const cartItems = getLocalStorage("so-cart");
@@ -50,27 +69,20 @@ function renderCartTotal() {
   document.getElementById("cart-footer").classList.remove("hide");
 
   // add the total price
-  let cartTotal = 0;
+  let cartTotal = calcCartTotal(cartItems);
   // calcuates number of items in cart
-  let numberInCart = 0;
-  for (let i = 0; i < cartItems.length; i++) {
-    cartTotal += cartItems[i]['Quantity'] * cartItems[i]['FinalPrice'];
-    numberInCart += cartItems[i]['Quantity'];
-  }
+  let numberInCart = calcNumCartItems(cartItems);
   cartTotal = numberWithCommas(cartTotal.toFixed(2));
   console.log('Total number:', numberInCart);
 
-
   totalItemsInCart(numberInCart);
- 
-
-
+  
   // append price to div
   const cartTotalContent = document.createTextNode(cartTotal);
   document.getElementById("cart-footer").appendChild(cartTotalContent);
 }
 
-function totalItemsInCart(items) {
+export function totalItemsInCart(items) {
   if (items >= 1) {
   let element = document.getElementById("numberOfItems");
   element.classList.add("cartItems_total");
